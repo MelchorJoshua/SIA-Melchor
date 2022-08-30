@@ -1,0 +1,129 @@
+Instructions Activity:
+1. In the s01 folder, create an activity folder and an index.html and script.js file inside of it.
+2. Link the script.js file to the index.html file.
+3. Given the code provided by your instructor, fix the JSON string by looking for errors when the code tries to parse the JSON string.
+4. Check and correct the JSON string if the following are missing:
+		- Double quotes
+		- Commas
+		- Colons
+		- Square/Curly brackets
+		- Values
+5. Stringify an object with the following properties:
+		- Name (String)
+		- Category (String)
+		- Quantity (Number)
+		- Model (String)
+6. Create a git repository named s01.
+7. Initialize a local git repository, add the remote link and push to git with the commit message of Add activity code.
+8. Add the link in Boodle.
+===========================
+// console.log('Hello World');
+
+/* 
+	JSON
+		- JavaScript Object Notation is a popular data format fro application to communicate with each other
+		- it may look like a JavaScript Object but it is actually a string.
+	Syntax:
+		{
+			"key1": "valueA",
+			"key2": "valueB"
+		}
+		keys are wrapped in curly braces
+*/
+let sample = `
+	{
+		"name": "Katnis Everdeen",
+		"age": 20,
+		"address": {
+			"city":"Kansas City",
+			"state": "Kansas"
+		}
+	} `;
+
+console.log(sample);
+
+// Are we able to turn a JSON into a JS Object?
+// JSON.parse() - will return JSON as a JS Object
+console.log(JSON.parse(sample));
+
+
+	//comments
+	//	- ctrl + / = //
+	//	- ctrl + shift + / - /**/
+
+/* JSON Array - is an array JSON*/
+
+let sampleArr = `
+	[
+		{
+			"email": "jasonNewsted@gmail.com",
+			"password": "iplaybass1234", 
+			"isAdmin": false
+		}, 
+		{
+			"email": "larsDrum@gmail.com",
+			"password": "metallicaMe80", 
+			"isAdmin": true
+		}
+	]
+`;
+console.log(sampleArr);
+// Can we use array methods on a JSON array?
+// No, because JSON is a string
+// So what can we do to be able to add more items/objects in our sampleArr?
+
+//Parsed the JSON array to a JS array and saved it in a variable:
+
+let parsedSampleArr = JSON.parse(sampleArr);
+console.log(parsedSampleArr);
+
+// can we now delete the last item in the JSON Array?
+console.log(parsedSampleArr.pop());
+console.log(parsedSampleArr);
+
+// If for example we need to send this data back to the client/front-end, it should be in JSON format
+
+// JSON.parse() does not  mutate or update the original JSON
+// We can actually turn a JS Object into a JSON
+// JSON.stringify() will stringify JS Objects as JSON
+
+sampleArr = JSON.stringify(parsedSampleArr);
+console.log(sampleArr);
+
+// Database (JSON) => server/API (JSON to JS Object to process) => sent as JSON => client
+
+
+/* 
+	Mini-Activity: Assignment
+
+	Given a JSON array, process it and convert to a JS Object so we can manipulate the array.
+		example of array:
+			sample = ['pizza', 'hamburger', spaghetti, 'shanghi', 'hotdog stick on a pineapple','pancit bihon']
+			
+	Delete the last item in the array and add a new item in the array.
+
+	Stringify the array back in JSON and update jsonArr with the stringified array
+
+*/
+// Solution for mini-activity
+let jsonArr = `
+	[
+		"pizza", 
+		"hamburger", 
+		"spaghetti", 
+		"shanghai", 
+		"hotdog stick on a pineapple",
+		"pancit bihon"
+	]
+`;
+
+console.log(jsonArr);
+
+// conversion of JSON to JS object
+let parsedJsonArr = JSON.parse(jsonArr);
+
+parsedJsonArr.pop();
+parsedJsonArr.push("ice cream");
+
+jsonArr = JSON.stringify(parsedJsonArr);
+console.log(jsonArr);
